@@ -1,0 +1,38 @@
+{
+	"name": "Amusement Park Wait Time Trend Analysis Platform",
+	"build": {
+		"dockerfile": "Dockerfile"
+	},
+
+	// 👇 Features to add to the Dev Container. More info: https://containers.dev/implementors/features.
+	// "features": {},
+
+	// 👇 Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [],
+
+	// 👇 Use 'postCreateCommand' to run commands after the container is created.
+	// "postCreateCommand": "",
+
+	// 👇 Configure tool-specific properties.
+	"customizations": {
+        "vscode": {
+            "extensions":["ms-python.python",
+			 			"njpwerner.autodocstring",
+						"codeium.codeium",
+						"dracula-theme.theme-dracula",
+						"ms-python.black-formatter",
+						"ms-python.vscode-pylance",
+						"ms-python.vscode-pylance",
+						"ms-python.vscode-pytest",
+						"ms-python.vscode-python",
+						"ms-python.vscode-python-debug",
+						"ms-python.vscode-python-test",
+						"ms-python.vscode-pylint",
+						"ms-toolsai.jupyter"
+					]
+            }
+        }
+
+	// 👇 Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+	// "remoteUser": "root"
+}
