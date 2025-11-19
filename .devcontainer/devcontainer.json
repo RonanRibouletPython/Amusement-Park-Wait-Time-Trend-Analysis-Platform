@@ -11,7 +11,7 @@
 	// "forwardPorts": [],
 
 	// 👇 Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "poetry install",
+	"postCreateCommand": "poetry install && gcloud auth login xiaomironan@gmail.com",
 
 	// 👇 Configure tool-specific properties.
 	"customizations": {
