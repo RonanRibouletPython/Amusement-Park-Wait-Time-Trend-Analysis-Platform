@@ -44,3 +44,30 @@ class GCSHandler:
         except Exception as e:
             logger.error(f"Failed to create bucket: {e}")
             raise e
+    
+    async def upload_json_data(self, path: str, data: Any) -> None:
+        """
+        Uploads data (Dict or List) as NDJSON (Newline Delimited JSON) to GCS.
+        This is the preferred format for BigQuery.
+        """
+        
+        loop = asyncio.get_running_loop()
+        
+        # Prepare the received data
+        if isinstance(data, list): # List handling
+            # Convert list to NDJSON
+            content = "\n".join([json.dumps(record) for record in data])
+        else: # Dict handling
+            content = json.dumps(data)
+        
+        # Upload
+        await loop.run_in_executor(None, self._upload_string_sync, path, content)
+    
+    def _upload_string_sync(self, path: str, content: str) -> None:
+        try:
+            blob = self.bucket.blob(path)
+            blob.upload_from_string(content, content_type="application/x-ndjson")
+        
+        except Exception as e:
+            logger.error(f"Failed to upload to {path}: {e}")
+            raise e
