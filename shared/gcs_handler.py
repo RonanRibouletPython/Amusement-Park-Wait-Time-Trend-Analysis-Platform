@@ -2,7 +2,7 @@ from google.cloud import storage
 from google.api_core.exceptions import Conflict
 import asyncio
 import json
-from typing import Any, Optionnal
+from typing import Any, Optional
 
 
 from tools.logger import get_logger

@@ -4,7 +4,7 @@ from typing import List, Dict, Any, Optional
 import httpx
 from pydantic_settings import BaseSettings
 from tenacity import retry, stop_after_attempt, wait_fixed, retry_if_exception_type, before_log
-import datetime as dt
+from datetime import datetime as dt, timezone as tz
 from tools.logger import get_logger
 from shared.gcs_handler import GCSHandler
 
@@ -106,17 +106,16 @@ class DataIngestion():
         layer=bronze/source=queue_times/year=2025/month=11/day=22/hour=14/filename.json
         """
         
-        now = dt.now(dt.timezone.utc)
+        now = dt.now(tz.utc)
         
-        filepath = {
-            f"layer=bronze/"
+        filepath = (f"layer=bronze/"
             f"source={source}/"
             f"year={now.year}/"
             f"month={now.month:02d}/"
             f"day={now.day:02d}/"
             f"hour={now.hour:02d}/"
-            f"{filename}"
-        }
+            f"{filename}")
+            
         logger.info(f"Generated path: {filepath}")
         return filepath
     

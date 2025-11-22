@@ -1,9 +1,12 @@
 from tools.logger import get_logger
 import asyncio
-from data_ingestion import DataIngestion
+from data_ingestion import DataIngestion, Settings
 import httpx
 
 logger = get_logger(__name__)
+
+# Init settings
+settings = Settings()
 
 class DataOrchestration:
     def __init__(self, data_ingestion: "DataIngestion") -> None:
@@ -13,6 +16,11 @@ class DataOrchestration:
     
     async def run_pipeline(self) -> None:
         logger.info("Starting data ingestion pipeline")
+        
+        # 0. Access GCS Handler
+        await self.data_ingestion.gcs.create_bucket_if_not_exists(
+            location=settings.BUCKET_LOCATION
+        )
         
         async with httpx.AsyncClient(timeout=10.0) as client:
             # 1. Get list of the parks
