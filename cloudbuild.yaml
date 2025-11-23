@@ -1,0 +1,13 @@
+steps:
+  # Docker Build
+  - name: 'gcr.io/cloud-builders/docker'
+    args: [
+      'build',
+      '-f', 'Dockerfile.prod',  # Specify the Dockerfile name
+      '-t', '$_IMAGE_NAME',
+      '.'
+    ]
+
+# Push the image to the registry
+images:
+  - '$_IMAGE_NAME'
