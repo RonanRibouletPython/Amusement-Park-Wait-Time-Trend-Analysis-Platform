@@ -5,7 +5,15 @@
 	},
 
 	// 👇 Features to add to the Dev Container. More info: https://containers.dev/implementors/features.
-	// "features": {},
+	"features": {
+    "ghcr.io/devcontainers/features/python:1": {},
+    // ADD THIS SECTION:
+    "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {
+        "version": "latest",
+        "enableNonRootDocker": "true",
+        "moby": "true"
+    }
+  },
 
 	// 👇 Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
