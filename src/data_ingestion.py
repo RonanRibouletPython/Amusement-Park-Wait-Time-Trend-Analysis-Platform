@@ -114,6 +114,7 @@ class DataIngestion():
             f"month={now.month:02d}/"
             f"day={now.day:02d}/"
             f"hour={now.hour:02d}/"
+            f"minute={now.minute:02d}/"
             f"{filename}")
             
         logger.info(f"Generated path: {filepath}")
