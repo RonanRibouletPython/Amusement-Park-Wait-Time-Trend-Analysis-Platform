@@ -2,6 +2,8 @@
 
 ## Things I learned
 
+### GCP
+
 Test locally the data ingestion Docker image:
 1. Build the image: docker build -t ingestion-test .
 2. Run the container with gcloud credentials:
@@ -25,3 +27,8 @@ gcloud config set project amusement-park-wait-time
 Generate Key for service account:
 gcloud iam service-accounts keys create secrets/sa-key.json \
 --iam-account=park-pipeline-service-account@amusement-park-wait-time.iam.gserviceaccount.com
+
+### GIT
+Source Control lost my credentials so here is how to set it up again
+git config --global user.email newsletterpython13@gmail.com
+git config --global user.name RonanRibouletPython
