@@ -28,6 +28,13 @@ root_rides AS (
         CAST(JSON_VALUE(ride, '$.is_open') AS BOOL) as is_open,
         CAST(JSON_VALUE(ride, '$.wait_time') AS INT64) as wait_time,
         CAST(JSON_VALUE(ride, '$.last_updated') AS TIMESTAMP) as last_updated
+        -- Added logic to categorize the wait times
+        CASE
+            WHEN CAST(JSON_VALUE(ride, '$.wait_time') AS INT64) == 0 THEN 'None'
+            WHEN CAST(JSON_VALUE(ride, '$.wait_time') AS INT64) <= 15 THEN 'Short'
+            WHEN CAST(JSON_VALUE(ride, '$.wait_time') AS INT64) <= 45 THEN 'Medium'
+            WHEN CAST(JSON_VALUE(ride, '$.wait_time') AS INT64) > 45 THEN 'Long'
+            ELSE 'Unknown'
     FROM base,
     -- Unnest directly using JSON_QUERY_ARRAY
     UNNEST(JSON_QUERY_ARRAY(rides_json)) as ride
