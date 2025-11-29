@@ -1,6 +1,7 @@
 from tools.logger import get_logger
 import asyncio
 from data_ingestion import DataIngestion, Settings
+from data_transformation import DataTransformation
 import httpx
 
 logger = get_logger(__name__)
@@ -11,7 +12,7 @@ settings = Settings()
 class DataOrchestration:
     def __init__(self, data_ingestion: "DataIngestion") -> None:
         self.data_ingestion = data_ingestion
-        
+        self.transformer = DataTransformation()
         logger.info("DataOrchestration initialized")
     
     async def run_pipeline(self) -> None:
@@ -61,7 +62,17 @@ class DataOrchestration:
             # Result validation
             valid_results = [r for r in results if r]
             logger.info(f"Pipeline finished. Successfully retrieved {len(valid_results)}/{len(park_ids)} queue datasets.")
-        
+
+            # 5. Transform data
+            if valid_results:
+                logger.info("Starting to transform data")
+                try:
+                    self.transformer.process_all()
+                except Exception as e:
+                    logger.error(f"Failed to setup dataset: {e}")
+            else:
+                logger.warning("No valid results found. Transformation skipped.")   
+                
         logger.info(f"Pipeline finished successfully with {len(park_ids)} parks")
 
 if __name__ == "__main__":

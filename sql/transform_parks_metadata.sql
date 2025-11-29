@@ -1,4 +1,4 @@
-CREATE TABLE `{dest_table}`
+CREATE OR REPLACE TABLE `{dest_table}`
 PARTITION BY DATE(loaded_at)
 CLUSTER BY company_id, park_id
 AS
@@ -28,13 +28,14 @@ parks_flattened AS (
     day,
     hour,
     minute,
-    CAST(JSON_EXTRACT_SCALAR(park, '$.id') AS INT64) AS park_id,
-    JSON_EXTRACT_SCALAR(park, '$.name') AS park_name,
-    JSON_EXTRACT_SCALAR(park, '$.continent') AS continent,
-    JSON_EXTRACT_SCALAR(park, '$.country') AS country,
-    CAST(JSON_EXTRACT_SCALAR(park, '$.latitude') AS FLOAT64) AS latitude,
-    CAST(JSON_EXTRACT_SCALAR(park, '$.longitude') AS FLOAT64) AS longitude,
-    JSON_EXTRACT_SCALAR(park, '$.timezone') AS timezone
+    -- Use JSON_VALUE for native BigQuery JSON types
+    CAST(JSON_VALUE(park, '$.id') AS INT64) AS park_id,
+    JSON_VALUE(park, '$.name') AS park_name,
+    JSON_VALUE(park, '$.continent') AS continent,
+    JSON_VALUE(park, '$.country') AS country,
+    CAST(JSON_VALUE(park, '$.latitude') AS FLOAT64) AS latitude,
+    CAST(JSON_VALUE(park, '$.longitude') AS FLOAT64) AS longitude,
+    JSON_VALUE(park, '$.timezone') AS timezone
   FROM parks_unnested
 ),
 

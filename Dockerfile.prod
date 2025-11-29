@@ -27,6 +27,7 @@ RUN poetry install --no-root --only main
 COPY src/ ./src/
 COPY shared/ ./shared/
 COPY tools/ ./tools/
+COPY sql/ ./sql/
 
 # Set environment variables for Python to look in the app directory for modules
 ENV PYTHONPATH=/app

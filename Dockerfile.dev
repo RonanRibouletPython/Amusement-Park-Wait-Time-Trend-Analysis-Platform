@@ -27,6 +27,7 @@ RUN poetry install --no-root --only main
 COPY src/ ./src/
 COPY shared/ ./shared/
 COPY tools/ ./tools/
+COPY sql ./sql/
 # Copy GCP credentials
 COPY secrets/sa-key.json /app/sa-key.json
 ENV GOOGLE_APPLICATION_CREDENTIALS="/app/sa-key.json"

@@ -1,5 +1,5 @@
 
-CREATE TABLE `{dest_table}`
+CREATE OR REPLACE TABLE `{dest_table}`
 PARTITION BY DATE(timestamp)
 AS
 WITH base AS (

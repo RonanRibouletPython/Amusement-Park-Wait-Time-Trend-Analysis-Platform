@@ -11,18 +11,27 @@ from shared.gcs_handler import GCSHandler
 logger = get_logger(__name__)
 
 class Settings(BaseSettings):
-    # BASE API URL
+    # --- API SETTINGS ---
     BASE_API_URL: str = "https://queue-times.com/"
     PARKS_ENDPOINT: str = "parks.json"
     QUEUE_TIMES_ENDPOINT: str = "parks/{park_id}/queue_times.json"
-    
-    # CONCURRENCY LIMIT
     CONCURRENCY_LIMIT: int = 10
     
-    # GCP SETTINGS
+    # --- GCP INFRASTRUCTURE ---
     GCP_PROJECT_ID: str = "amusement-park-wait-time"
     BUCKET_NAME: str = "amusement-park-datalake-v1"
     BUCKET_LOCATION: str = "EU"
+    
+    # --- BIGQUERY SETTINGS (Silver Layer) ---
+    RAW_DATASET: str = "amusement_park_raw" 
+    DERIVED_DATASET: str = "amusement_park_derived" 
+    
+    # Table Configs
+    QUEUE_TIMES_RAW_TABLE: str = "queue_times"
+    QUEUE_TIMES_SILVER_TABLE: str = "queue_times_cleaned"
+    
+    PARKS_METADATA_RAW_TABLE: str = "parks_metadata"
+    PARKS_METADATA_SILVER_TABLE: str = "parks_metadata_cleaned"
 
 settings = Settings()
 
