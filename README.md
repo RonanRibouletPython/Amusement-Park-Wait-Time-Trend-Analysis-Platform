@@ -177,6 +177,54 @@ gcloud scheduler jobs create http park-ingestion-cron \
     --oauth-service-account-email $SA_EMAIL
 ```
 
+## CI/CD Security Setup (Production Best Practice)
+*To separate concerns, we create a dedicated Service Account for GitHub/Cloud Build. This SA can deploy code but cannot read the actual data.*
+
+### Create Service Account
+```bash
+export PROJECT_ID=amusement-park-wait-time
+export CICD_SA_NAME=park-cicd-deployer
+export CICD_SA_EMAIL=${CICD_SA_NAME}@${PROJECT_ID}.iam.gserviceaccount.com
+
+# Create the Service Account
+gcloud iam service-accounts create $CICD_SA_NAME \
+    --description="Identity for Cloud Build CI/CD Pipeline" \
+    --display-name="Park CI/CD SA"
+```
+
+### Grant Permissions (IAM Roles):
+*The CI/CD account needs specific powers to build, push, and update Cloud Run.*
+
+```bash
+# 1. Allow pushing images to Artifact Registry
+gcloud projects add-iam-policy-binding $PROJECT_ID \
+    --member="serviceAccount:$CICD_SA_EMAIL" \
+    --role="roles/artifactregistry.writer"
+
+# 2. Allow writing Build Logs
+gcloud projects add-iam-policy-binding $PROJECT_ID \
+    --member="serviceAccount:$CICD_SA_EMAIL" \
+    --role="roles/logging.logWriter"
+
+# 3. Allow updating Cloud Run Jobs
+gcloud projects add-iam-policy-binding $PROJECT_ID \
+    --member="serviceAccount:$CICD_SA_EMAIL" \
+    --role="roles/run.developer"
+```
+
+### Grant "PassRole" Permission (Critical)
+*The CI/CD SA needs permission to assign the Runtime SA (park-pipeline-service-account) to the Cloud Run job.*
+
+```bash
+# Define your Runtime SA (The one the Python script uses)
+export RUNTIME_SA_EMAIL=park-pipeline-service-account@amusement-park-wait-time.iam.gserviceaccount.com
+
+# Allow CI/CD SA to act as the Runtime SA
+gcloud iam service-accounts add-iam-policy-binding $RUNTIME_SA_EMAIL \
+    --member="serviceAccount:$CICD_SA_EMAIL" \
+    --role="roles/iam.serviceAccountUser"
+```
+
 ## Miscellaneous / Config
 
 ### Git Configuration:
