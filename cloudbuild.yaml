@@ -1,13 +1,28 @@
 steps:
-  # Docker Build
+  # 1. Build the Container Image
   - name: 'gcr.io/cloud-builders/docker'
     args: [
       'build',
-      '-f', 'Dockerfile.prod',  # Specify the Dockerfile name
-      '-t', '$_IMAGE_NAME',
+      '-f', 'Dockerfile.prod',
+      '-t', 'europe-west1-docker.pkg.dev/$PROJECT_ID/park-repo/ingestion-job:latest',
       '.'
     ]
 
-# Push the image to the registry
-images:
-  - '$_IMAGE_NAME'
+  # 2. Push the Image to Artifact Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args: [
+      'push',
+      'europe-west1-docker.pkg.dev/$PROJECT_ID/park-repo/ingestion-job:latest'
+    ]
+
+  # 3. Deploy/Update the Cloud Run Job
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args: [
+      'run', 'jobs', 'update', 'park-ingestion-job',
+      '--image', 'europe-west1-docker.pkg.dev/$PROJECT_ID/park-repo/ingestion-job:latest',
+      '--region', 'europe-west1'
+    ]
+
+# Global Timeout
+timeout: '1200s'
