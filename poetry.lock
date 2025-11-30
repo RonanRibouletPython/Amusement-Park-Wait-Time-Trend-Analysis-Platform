@@ -151,18 +151,6 @@ files = [
 ]
 
 [[package]]
-name = "atpublic"
-version = "6.0.2"
-description = "Keep all y'all's __all__'s in sync"
-optional = false
-python-versions = ">=3.9"
-groups = ["main"]
-files = [
-    {file = "atpublic-6.0.2-py3-none-any.whl", hash = "sha256:156cfd3854e580ebfa596094a018fe15e4f3fa5bade74b39c3dabb54f12d6565"},
-    {file = "atpublic-6.0.2.tar.gz", hash = "sha256:f90dcd17627ac21d5ce69e070d6ab89fb21736eb3277e8b693cc8484e1c7088c"},
-]
-
-[[package]]
 name = "attrs"
 version = "25.4.0"
 description = "Classes Without Boilerplate"
@@ -691,25 +679,6 @@ testing = ["aiohttp (<3.10.0)", "aiohttp (>=3.6.2,<4.0.0)", "aioresponses", "cry
 urllib3 = ["packaging", "urllib3"]
 
 [[package]]
-name = "google-auth-oauthlib"
-version = "1.2.2"
-description = "Google Authentication Library"
-optional = false
-python-versions = ">=3.6"
-groups = ["main"]
-files = [
-    {file = "google_auth_oauthlib-1.2.2-py3-none-any.whl", hash = "sha256:fd619506f4b3908b5df17b65f39ca8d66ea56986e5472eb5978fd8f3786f00a2"},
-    {file = "google_auth_oauthlib-1.2.2.tar.gz", hash = "sha256:11046fb8d3348b296302dd939ace8af0a724042e8029c1b872d87fabc9f41684"},
-]
-
-[package.dependencies]
-google-auth = ">=2.15.0"
-requests-oauthlib = ">=0.7.0"
-
-[package.extras]
-tool = ["click (>=6.0.0)"]
-
-[[package]]
 name = "google-cloud-bigquery"
 version = "3.38.0"
 description = "Google BigQuery API client library"
@@ -741,36 +710,6 @@ matplotlib = ["matplotlib (>=3.10.3) ; python_version >= \"3.10\"", "matplotlib 
 opentelemetry = ["opentelemetry-api (>=1.1.0)", "opentelemetry-instrumentation (>=0.20b0)", "opentelemetry-sdk (>=1.1.0)"]
 pandas = ["db-dtypes (>=1.0.4,<2.0.0)", "grpcio (>=1.47.0,<2.0.0)", "grpcio (>=1.49.1,<2.0.0) ; python_version >= \"3.11\"", "pandas (>=1.3.0)", "pandas-gbq (>=0.26.1)", "pyarrow (>=3.0.0)"]
 tqdm = ["tqdm (>=4.23.4,<5.0.0)"]
-
-[[package]]
-name = "google-cloud-bigquery-storage"
-version = "2.34.0"
-description = "Google Cloud Bigquery Storage API client library"
-optional = false
-python-versions = ">=3.7"
-groups = ["main"]
-files = [
-    {file = "google_cloud_bigquery_storage-2.34.0-py3-none-any.whl", hash = "sha256:5c1b55f2a33bfb0730cf5a2f7e4f0cc6a7166d9026142ab78c2ffd5130884c46"},
-    {file = "google_cloud_bigquery_storage-2.34.0.tar.gz", hash = "sha256:221740a991b3173027ebb0f3aa5f06c65bdf90fc4eb1b71da798093b6bf6d22d"},
-]
-
-[package.dependencies]
-google-api-core = {version = ">=1.34.1,<2.0.dev0 || >=2.11.dev0,<3.0.0", extras = ["grpc"]}
-google-auth = ">=2.14.1,<2.24.0 || >2.24.0,<2.25.0 || >2.25.0,<3.0.0"
-grpcio = [
-    {version = ">=1.75.1,<2.0.0", markers = "python_version >= \"3.14\""},
-    {version = ">=1.33.2,<2.0.0"},
-]
-proto-plus = [
-    {version = ">=1.25.0,<2.0.0", markers = "python_version >= \"3.13\""},
-    {version = ">=1.22.3,<2.0.0"},
-]
-protobuf = ">=3.20.2,<4.21.0 || >4.21.0,<4.21.1 || >4.21.1,<4.21.2 || >4.21.2,<4.21.3 || >4.21.3,<4.21.4 || >4.21.4,<4.21.5 || >4.21.5,<7.0.0"
-
-[package.extras]
-fastavro = ["fastavro (>=0.21.2)"]
-pandas = ["importlib-metadata (>=1.0.0) ; python_version < \"3.8\"", "pandas (>=0.21.1)"]
-pyarrow = ["pyarrow (>=0.15.0)"]
 
 [[package]]
 name = "google-cloud-core"
@@ -1051,64 +990,6 @@ cli = ["click (==8.*)", "pygments (==2.*)", "rich (>=10,<14)"]
 http2 = ["h2 (>=3,<5)"]
 socks = ["socksio (==1.*)"]
 zstd = ["zstandard (>=0.18.0)"]
-
-[[package]]
-name = "ibis-framework"
-version = "11.0.0"
-description = "The portable Python dataframe library"
-optional = false
-python-versions = ">=3.9"
-groups = ["main"]
-files = [
-    {file = "ibis_framework-11.0.0-py3-none-any.whl", hash = "sha256:92ff82a96f4eac7f86fa9b6a315e04b5a8f9ed3d186539d88f48e628363f2e72"},
-    {file = "ibis_framework-11.0.0.tar.gz", hash = "sha256:0249185eaabb800e224f448cc06ce8ba168df00b269e132d62629f462eca8842"},
-]
-
-[package.dependencies]
-atpublic = ">=2.3"
-db-dtypes = {version = ">=0.3", optional = true, markers = "extra == \"bigquery\""}
-google-cloud-bigquery = {version = ">=3", optional = true, markers = "extra == \"bigquery\""}
-google-cloud-bigquery-storage = {version = ">=2", optional = true, markers = "extra == \"bigquery\""}
-numpy = {version = ">=1.23.2,<3", optional = true, markers = "extra == \"bigquery\""}
-pandas = {version = ">=1.5.3,<3", optional = true, markers = "extra == \"bigquery\""}
-pandas-gbq = {version = ">=0.26.1", optional = true, markers = "extra == \"bigquery\""}
-parsy = ">=2"
-pyarrow = {version = ">=10.0.1", optional = true, markers = "extra == \"bigquery\""}
-pyarrow-hotfix = {version = ">=0.4", optional = true, markers = "extra == \"bigquery\""}
-pydata-google-auth = {version = ">=1.4.0", optional = true, markers = "extra == \"bigquery\""}
-python-dateutil = ">=2.8.2"
-rich = {version = ">=12.4.4", optional = true, markers = "extra == \"bigquery\""}
-sqlglot = ">=23.4,<26.32.0 || >26.32.0"
-toolz = ">=0.11"
-typing-extensions = ">=4.3.0"
-tzdata = ">=2022.7"
-
-[package.extras]
-athena = ["fsspec[s3]", "numpy (>=1.23.2,<3)", "pandas (>=1.5.3,<3)", "pyarrow (>=10.0.1)", "pyarrow-hotfix (>=0.4)", "pyathena[arrow,pandas] (>=3.11.0)", "rich (>=12.4.4)"]
-bigquery = ["db-dtypes (>=0.3)", "google-cloud-bigquery (>=3)", "google-cloud-bigquery-storage (>=2)", "numpy (>=1.23.2,<3)", "pandas (>=1.5.3,<3)", "pandas-gbq (>=0.26.1)", "pyarrow (>=10.0.1)", "pyarrow-hotfix (>=0.4)", "pydata-google-auth (>=1.4.0)", "rich (>=12.4.4)"]
-clickhouse = ["clickhouse-connect[arrow,numpy,pandas] (>=0.5.23)", "numpy (>=1.23.2,<3)", "pandas (>=1.5.3,<3)", "pyarrow (>=10.0.1)", "pyarrow-hotfix (>=0.4)", "rich (>=12.4.4)"]
-databricks = ["databricks-sql-connector-core (>=4)", "numpy (>=1.23.2,<3)", "pandas (>=1.5.3,<3)", "pyarrow (>=10.0.1)", "pyarrow-hotfix (>=0.4)", "rich (>=12.4.4)"]
-datafusion = ["datafusion (>=0.6)", "numpy (>=1.23.2,<3)", "packaging (>=21.3)", "pandas (>=1.5.3,<3)", "pyarrow (>=10.0.1)", "pyarrow-hotfix (>=0.4)", "rich (>=12.4.4)"]
-decompiler = ["black (>=22.1.0)"]
-deltalake = ["deltalake (>=0.9.0)"]
-druid = ["numpy (>=1.23.2,<3)", "pandas (>=1.5.3,<3)", "pyarrow (>=10.0.1)", "pyarrow-hotfix (>=0.4)", "pydruid (>=0.6.7)", "rich (>=12.4.4)"]
-duckdb = ["duckdb (>=0.10.3,!=1.3.0)", "numpy (>=1.23.2,<3)", "packaging (>=21.3)", "pandas (>=1.5.3,<3)", "pyarrow (>=10.0.1)", "pyarrow-hotfix (>=0.4)", "rich (>=12.4.4)"]
-examples = ["pins[gcs] (>=0.8.3)"]
-exasol = ["numpy (>=1.23.2,<3)", "pandas (>=1.5.3,<3)", "pyarrow (>=10.0.1)", "pyarrow-hotfix (>=0.4)", "pyexasol (>=0.25.2)", "rich (>=12.4.4)"]
-flink = ["numpy (>=1.23.2,<3)", "pandas (>=1.5.3,<3)", "pyarrow (>=10.0.1)", "pyarrow-hotfix (>=0.4)", "rich (>=12.4.4)"]
-geospatial = ["geoarrow-types (>=0.2)", "geopandas (>=0.6)", "pyproj (>=3.3.0)", "shapely (>=2)"]
-impala = ["impyla (>=0.17)", "numpy (>=1.23.2,<3)", "pandas (>=1.5.3,<3)", "pyarrow (>=10.0.1)", "pyarrow-hotfix (>=0.4)", "rich (>=12.4.4)"]
-mssql = ["numpy (>=1.23.2,<3)", "pandas (>=1.5.3,<3)", "pyarrow (>=10.0.1)", "pyarrow-hotfix (>=0.4)", "pyodbc (>=4.0.39)", "rich (>=12.4.4)"]
-mysql = ["mysqlclient (>=2.2.4)", "numpy (>=1.23.2,<3)", "pandas (>=1.5.3,<3)", "pyarrow (>=10.0.1)", "pyarrow-hotfix (>=0.4)", "rich (>=12.4.4)"]
-oracle = ["numpy (>=1.23.2,<3)", "oracledb (>=1.3.1)", "pandas (>=1.5.3,<3)", "pyarrow (>=10.0.1)", "pyarrow-hotfix (>=0.4)", "rich (>=12.4.4)"]
-polars = ["numpy (>=1.23.2,<3)", "pandas (>=1.5.3,<3)", "polars (>=1)", "pyarrow (>=10.0.1)", "pyarrow-hotfix (>=0.4)", "rich (>=12.4.4)"]
-postgres = ["numpy (>=1.23.2,<3)", "pandas (>=1.5.3,<3)", "psycopg (>=3.2.0)", "pyarrow (>=10.0.1)", "pyarrow-hotfix (>=0.4)", "rich (>=12.4.4)"]
-pyspark = ["numpy (>=1.23.2,<3)", "packaging (>=21.3)", "pandas (>=1.5.3,<3)", "pyarrow (>=10.0.1)", "pyarrow-hotfix (>=0.4)", "pyspark (>=3.3.3,<4)", "rich (>=12.4.4)"]
-risingwave = ["numpy (>=1.23.2,<3)", "pandas (>=1.5.3,<3)", "psycopg2 (>=2.8.4)", "pyarrow (>=10.0.1)", "pyarrow-hotfix (>=0.4)", "rich (>=12.4.4)"]
-snowflake = ["numpy (>=1.23.2,<3)", "pandas (>=1.5.3,<3)", "pyarrow (>=10.0.1)", "pyarrow-hotfix (>=0.4)", "rich (>=12.4.4)", "snowflake-connector-python (>=3.0.2,!=3.3.0b1)"]
-sqlite = ["numpy (>=1.23.2,<3)", "packaging (>=21.3)", "pandas (>=1.5.3,<3)", "pyarrow (>=10.0.1)", "pyarrow-hotfix (>=0.4)", "regex (>=2021.7.6)", "rich (>=12.4.4)"]
-trino = ["numpy (>=1.23.2,<3)", "pandas (>=1.5.3,<3)", "pyarrow (>=10.0.1)", "pyarrow-hotfix (>=0.4)", "rich (>=12.4.4)", "trino (>=0.321)"]
-visualization = ["graphviz (>=0.16)"]
 
 [[package]]
 name = "idna"
@@ -1566,30 +1447,6 @@ nearley = ["js2py"]
 regex = ["regex"]
 
 [[package]]
-name = "markdown-it-py"
-version = "4.0.0"
-description = "Python port of markdown-it. Markdown parsing, done right!"
-optional = false
-python-versions = ">=3.10"
-groups = ["main"]
-files = [
-    {file = "markdown_it_py-4.0.0-py3-none-any.whl", hash = "sha256:87327c59b172c5011896038353a81343b6754500a08cd7a4973bb48c6d578147"},
-    {file = "markdown_it_py-4.0.0.tar.gz", hash = "sha256:cb0a2b4aa34f932c007117b194e945bd74e0ec24133ceb5bac59009cda1cb9f3"},
-]
-
-[package.dependencies]
-mdurl = ">=0.1,<1.0"
-
-[package.extras]
-benchmarking = ["psutil", "pytest", "pytest-benchmark"]
-compare = ["commonmark (>=0.9,<1.0)", "markdown (>=3.4,<4.0)", "markdown-it-pyrs", "mistletoe (>=1.0,<2.0)", "mistune (>=3.0,<4.0)", "panflute (>=2.3,<3.0)"]
-linkify = ["linkify-it-py (>=1,<3)"]
-plugins = ["mdit-py-plugins (>=0.5.0)"]
-profiling = ["gprof2dot"]
-rtd = ["ipykernel", "jupyter_sphinx", "mdit-py-plugins (>=0.5.0)", "myst-parser", "pyyaml", "sphinx", "sphinx-book-theme (>=1.0,<2.0)", "sphinx-copybutton", "sphinx-design"]
-testing = ["coverage", "pytest", "pytest-cov", "pytest-regressions", "requests"]
-
-[[package]]
 name = "markupsafe"
 version = "3.0.3"
 description = "Safely add untrusted strings to HTML/XML markup."
@@ -1705,18 +1562,6 @@ traitlets = "*"
 
 [package.extras]
 test = ["flake8", "nbdime", "nbval", "notebook", "pytest"]
-
-[[package]]
-name = "mdurl"
-version = "0.1.2"
-description = "Markdown URL utilities"
-optional = false
-python-versions = ">=3.7"
-groups = ["main"]
-files = [
-    {file = "mdurl-0.1.2-py3-none-any.whl", hash = "sha256:84008a41e51615a49fc9966191ff91509e3c40b939176e643fd50a5c2196b8f8"},
-    {file = "mdurl-0.1.2.tar.gz", hash = "sha256:bb413d29f5eea38f31dd4754dd7377d4465116fb207585f97bf925588687c1ba"},
-]
 
 [[package]]
 name = "mistune"
@@ -1951,23 +1796,6 @@ files = [
 ]
 
 [[package]]
-name = "oauthlib"
-version = "3.3.1"
-description = "A generic, spec-compliant, thorough implementation of the OAuth request-signing logic"
-optional = false
-python-versions = ">=3.8"
-groups = ["main"]
-files = [
-    {file = "oauthlib-3.3.1-py3-none-any.whl", hash = "sha256:88119c938d2b8fb88561af5f6ee0eec8cc8d552b7bb1f712743136eb7523b7a1"},
-    {file = "oauthlib-3.3.1.tar.gz", hash = "sha256:0f0f8aa759826a193cf66c12ea1af1637f87b9b4622d46e866952bb022e538c9"},
-]
-
-[package.extras]
-rsa = ["cryptography (>=3.0.0)"]
-signals = ["blinker (>=1.4.0)"]
-signedtoken = ["cryptography (>=3.0.0)", "pyjwt (>=2.0.0,<3)"]
-
-[[package]]
 name = "overrides"
 version = "7.7.0"
 description = "A decorator to automatically detect mismatch when overriding a method."
@@ -2092,37 +1920,6 @@ test = ["hypothesis (>=6.46.1)", "pytest (>=7.3.2)", "pytest-xdist (>=2.2.0)"]
 xml = ["lxml (>=4.9.2)"]
 
 [[package]]
-name = "pandas-gbq"
-version = "0.31.0"
-description = "Google BigQuery connector for pandas"
-optional = false
-python-versions = ">=3.9"
-groups = ["main"]
-files = [
-    {file = "pandas_gbq-0.31.0-py3-none-any.whl", hash = "sha256:cb7aa43bba052631aed66d4464820657aa037b203e9ee1a413437171ab9ab867"},
-    {file = "pandas_gbq-0.31.0.tar.gz", hash = "sha256:0a999cfb06c83efa54d36731dda5748d83daef1445cb23ec03d137d23af7fd5c"},
-]
-
-[package.dependencies]
-db-dtypes = ">=1.0.4,<2.0.0"
-google-api-core = ">=2.15.0,<3.0.0"
-google-auth = ">=2.14.1"
-google-auth-oauthlib = ">=0.7.0"
-google-cloud-bigquery = ">=3.20.0,<4.0.0"
-numpy = ">=1.18.1"
-packaging = ">=22.0.0"
-pandas = ">=1.1.4"
-psutil = ">=5.9.8"
-pyarrow = ">=4.0.0"
-pydata-google-auth = ">=1.5.0"
-setuptools = "*"
-
-[package.extras]
-bqstorage = ["google-cloud-bigquery-storage (>=2.16.2,<3.0.0)"]
-geopandas = ["Shapely (>=1.8.4)", "geopandas (>=0.9.0)"]
-tqdm = ["tqdm (>=4.23.0)"]
-
-[[package]]
 name = "pandocfilters"
 version = "1.5.1"
 description = "Utilities for writing pandoc filters in python"
@@ -2149,18 +1946,6 @@ files = [
 [package.extras]
 qa = ["flake8 (==5.0.4)", "mypy (==0.971)", "types-setuptools (==67.2.0.1)"]
 testing = ["docopt", "pytest"]
-
-[[package]]
-name = "parsy"
-version = "2.2"
-description = "Easy-to-use parser combinators, for parsing in pure Python"
-optional = false
-python-versions = ">=3.9"
-groups = ["main"]
-files = [
-    {file = "parsy-2.2-py3-none-any.whl", hash = "sha256:5e981613d9d2d8b68012d1dd0afe928967bea2e4eefdb76c2f545af0dd02a9e7"},
-    {file = "parsy-2.2.tar.gz", hash = "sha256:e943147644a8cf0d82d1bcb5c5867dd517495254cea3e3eb058b1e421cb7561f"},
-]
 
 [[package]]
 name = "pexpect"
@@ -2385,18 +2170,6 @@ files = [
 ]
 
 [[package]]
-name = "pyarrow-hotfix"
-version = "0.7"
-description = ""
-optional = false
-python-versions = ">=3.5"
-groups = ["main"]
-files = [
-    {file = "pyarrow_hotfix-0.7-py3-none-any.whl", hash = "sha256:3236f3b5f1260f0e2ac070a55c1a7b339c4bb7267839bd2015e283234e758100"},
-    {file = "pyarrow_hotfix-0.7.tar.gz", hash = "sha256:59399cd58bdd978b2e42816a4183a55c6472d4e33d183351b6069f11ed42661d"},
-]
-
-[[package]]
 name = "pyasn1"
 version = "0.6.1"
 description = "Pure-Python implementation of ASN.1 types and DER/BER/CER codecs (X.208)"
@@ -2615,23 +2388,6 @@ azure-key-vault = ["azure-identity (>=1.16.0)", "azure-keyvault-secrets (>=4.8.0
 gcp-secret-manager = ["google-cloud-secret-manager (>=2.23.1)"]
 toml = ["tomli (>=2.0.1)"]
 yaml = ["pyyaml (>=6.0.1)"]
-
-[[package]]
-name = "pydata-google-auth"
-version = "1.9.1"
-description = "PyData helpers for authenticating to Google APIs"
-optional = false
-python-versions = ">=3.9"
-groups = ["main"]
-files = [
-    {file = "pydata-google-auth-1.9.1.tar.gz", hash = "sha256:0a51ce41c601ca0bc69b8795bf58bedff74b4a6a007c9106c7cbcdec00eaced2"},
-    {file = "pydata_google_auth-1.9.1-py2.py3-none-any.whl", hash = "sha256:75ffce5d106e34b717b31844c1639ea505b7d9550dc23b96fb6c20d086b53fa3"},
-]
-
-[package.dependencies]
-google-auth = ">=1.25.0,<3.0dev"
-google-auth-oauthlib = ">=0.4.0"
-setuptools = "*"
 
 [[package]]
 name = "pygments"
@@ -2953,25 +2709,6 @@ socks = ["PySocks (>=1.5.6,!=1.5.7)"]
 use-chardet-on-py3 = ["chardet (>=3.0.2,<6)"]
 
 [[package]]
-name = "requests-oauthlib"
-version = "2.0.0"
-description = "OAuthlib authentication support for Requests."
-optional = false
-python-versions = ">=3.4"
-groups = ["main"]
-files = [
-    {file = "requests-oauthlib-2.0.0.tar.gz", hash = "sha256:b3dffaebd884d8cd778494369603a9e7b58d29111bf6b41bdc2dcd87203af4e9"},
-    {file = "requests_oauthlib-2.0.0-py2.py3-none-any.whl", hash = "sha256:7dd8a5c40426b779b0868c404bdef9768deccf22749cde15852df527e6269b36"},
-]
-
-[package.dependencies]
-oauthlib = ">=3.0.0"
-requests = ">=2.0.0"
-
-[package.extras]
-rsa = ["oauthlib[signedtoken] (>=3.0.0)"]
-
-[[package]]
 name = "rfc3339-validator"
 version = "0.1.4"
 description = "A pure python RFC3339 validator"
@@ -3015,25 +2752,6 @@ lark = ">=1.2.2"
 
 [package.extras]
 testing = ["pytest (>=8.3.5)"]
-
-[[package]]
-name = "rich"
-version = "14.2.0"
-description = "Render rich text, tables, progress bars, syntax highlighting, markdown and more to the terminal"
-optional = false
-python-versions = ">=3.8.0"
-groups = ["main"]
-files = [
-    {file = "rich-14.2.0-py3-none-any.whl", hash = "sha256:76bc51fe2e57d2b1be1f96c524b890b816e334ab4c1e45888799bfaab0021edd"},
-    {file = "rich-14.2.0.tar.gz", hash = "sha256:73ff50c7c0c1c77c8243079283f4edb376f0f6442433aecb8ce7e6d0b92d1fe4"},
-]
-
-[package.dependencies]
-markdown-it-py = ">=2.2.0"
-pygments = ">=2.13.0,<3.0.0"
-
-[package.extras]
-jupyter = ["ipywidgets (>=7.5.1,<9)"]
 
 [[package]]
 name = "rpds-py"
@@ -3250,22 +2968,6 @@ files = [
 ]
 
 [[package]]
-name = "sqlglot"
-version = "28.0.0"
-description = "An easily customizable SQL parser and transpiler"
-optional = false
-python-versions = ">=3.9"
-groups = ["main"]
-files = [
-    {file = "sqlglot-28.0.0-py3-none-any.whl", hash = "sha256:ac1778e7fa4812f4f7e5881b260632fc167b00ca4c1226868891fb15467122e4"},
-    {file = "sqlglot-28.0.0.tar.gz", hash = "sha256:cc9a651ef4182e61dac58aa955e5fb21845a5865c6a4d7d7b5a7857450285ad4"},
-]
-
-[package.extras]
-dev = ["duckdb (>=0.6)", "maturin (>=1.4,<2.0)", "mypy", "pandas", "pandas-stubs", "pdoc", "pre-commit", "pyperf", "python-dateutil", "pytz", "ruff (==0.7.2)", "types-python-dateutil", "types-pytz", "typing_extensions"]
-rs = ["sqlglotrs (==0.7.3)"]
-
-[[package]]
 name = "stack-data"
 version = "0.6.3"
 description = "Extract data from python stack frames and tracebacks for informative displays"
@@ -3341,18 +3043,6 @@ webencodings = ">=0.4"
 [package.extras]
 doc = ["sphinx", "sphinx_rtd_theme"]
 test = ["pytest", "ruff"]
-
-[[package]]
-name = "toolz"
-version = "1.1.0"
-description = "List processing tools and functional utilities"
-optional = false
-python-versions = ">=3.9"
-groups = ["main"]
-files = [
-    {file = "toolz-1.1.0-py3-none-any.whl", hash = "sha256:15ccc861ac51c53696de0a5d6d4607f99c210739caf987b5d2054f3efed429d8"},
-    {file = "toolz-1.1.0.tar.gz", hash = "sha256:27a5c770d068c110d9ed9323f24f1543e83b2f300a687b7891c1a6d56b697b5b"},
-]
 
 [[package]]
 name = "tornado"
@@ -3520,4 +3210,4 @@ test = ["pytest", "websockets"]
 [metadata]
 lock-version = "2.1"
 python-versions = "^3.11"
-content-hash = "74f709d6a52f1b3c4cb4443e60adaf9813f030451798b7806f76795a70233d55"
+content-hash = "60c923635cd06c83131472f5c25bd02dacd9b17d48f9fe28612ffe1ee6d08acd"
