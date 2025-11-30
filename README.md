@@ -225,6 +225,23 @@ gcloud iam service-accounts add-iam-policy-binding $RUNTIME_SA_EMAIL \
     --role="roles/iam.serviceAccountUser"
 ```
 
+### Create Bucket for Spark
+```bash
+# Define variables (matching your existing naming convention)
+export PROJECT_ID=amusement-park-wait-time
+export REGION=europe-west1
+export SPARK_STAGING_BUCKET=amusement-park-spark-staging
+
+# Create the bucket
+gcloud storage buckets create gs://$SPARK_STAGING_BUCKET \
+    --project=$PROJECT_ID \
+    --location=$REGION \
+    --uniform-bucket-level-access
+
+# Verify it exists
+gcloud storage buckets list --project=$PROJECT_ID
+```
+
 ## Miscellaneous / Config
 
 ### Git Configuration:
